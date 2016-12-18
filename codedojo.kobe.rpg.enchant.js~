@@ -609,7 +609,7 @@ window.onload = function() {
         // 新しいシーンを作る
         var scene = new Scene();
         // メッセージを表示する
-        scene.addChild(label.message("モンスターに倒された。。。"));
+        scene.addChild(label.message("モンスターに倒された....."));
 
         // ゲームオーバー画像のスプライトを作る
         var gameover = new Sprite(189, 97);
