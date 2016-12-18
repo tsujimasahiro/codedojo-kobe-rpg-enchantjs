@@ -158,9 +158,9 @@ window.onload = function() {
                     var enemy = new Enemy(ex, ey, 1);
                     stage.addChild(enemy);
                     // 敵の数を1ずつ足す
-                    enemiesCnt++;
+                    enemiesCnt++; 
                     // 現在のフレーム数をキーに設定する 配列の中で敵の区別がつくようにするため
-                    // たとえば、プレイヤーが敵を倒した時、どの敵を消滅させるかを選ぶ時に役に立つ 
+                    // たとえば、プレイヤーが敵を倒した時、どの敵を消めつさせるかを選ぶ時に役に立つ 
                     enemy.key = game.frame;
                     // 敵を配列に入れる
                     enemies[enemy.key] = enemy;
@@ -698,6 +698,9 @@ var Player = enchant.Class.create(enchant.Sprite, {
                 // 歩行アニメーションの基準フレーム番号を取得する
                 this.walk = game.frame % 3;
                 // 次のマス(16x16が1マス)まで移動しきったら停止する
+                // 16の倍数のところにしか止まらないようにする
+                // そうすることで、敵から追跡しやすくできるし、
+                // マップ上の当たり判定で止める位置を一定にすることができる
                 if ((this.vx && (this.x - 8) % 16 === 0) || (this.vy && this.y % 16 === 0)) {
                     this.isMoving = false;
                     this.walk = 0;
