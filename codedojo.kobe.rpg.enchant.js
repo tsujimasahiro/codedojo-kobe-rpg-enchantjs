@@ -106,7 +106,7 @@ window.onload = function() {
             // BGMのくりかえし
             if (game.isStart === false) {j
                 game.bgmSD.play();
-                // ボリュームの調整（最小:0.0 最大:1.0）
+                // ボリュームの調整（最小:0.0 最大:1.0
                 // wavファイルは効く MP3は効かないかも
                 game.bgmSD.volume = 0.3;
                 // 再生をループさせる
@@ -137,7 +137,7 @@ window.onload = function() {
             y = Math.max(game.height, y + map.height) - map.height;
             stage.x = x;
             stage.y = y;
-            // プレイヤーを画面の下端に移動すると、ルートシーンから公園シーンを切り替える
+            // プレイヤーを画面の下端に移動すると、ホームシーンから公園シーンを切り替える
             if (player.y > 445) game.pushScene(game.park(player.x, player.y));
 
             // woodsKeeperに近づいて(48ピクセル以内)、「a」ボタンを押すと、
