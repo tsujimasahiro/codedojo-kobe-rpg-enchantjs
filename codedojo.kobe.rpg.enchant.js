@@ -104,7 +104,7 @@ window.onload = function() {
         // rootSceneの「enterframe」イベントリスナ
         game.rootScene.addEventListener('enterframe', function(e) {
             // BGMのくりかえし
-            if (game.isStart === false) {j
+            if (game.isStart === false) {
                 game.bgmSD.play();
                 // ボリュームの調整（最小:0.0 最大:1.0
                 // wavファイルは効く MP3は効かないかも
