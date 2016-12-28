@@ -151,7 +151,7 @@ var enchant = function(modules) {
                 }
             }
         }
-
+// 子オブジェクトを再帰処理する
         for (i = 0, len = submodules.length; i < len; i++) {
             include(module[submodules[i]], prefix + submodules[i] + '.');
         }
