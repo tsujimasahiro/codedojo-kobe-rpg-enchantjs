@@ -140,11 +140,26 @@ window.onload = function() {
             // プレイヤーを画面の下端に移動すると、ホームシーンから公園シーンを切り替える
             if (player.y > 445) game.pushScene(game.park(player.x, player.y));
 
-            // woodsKeeperに近づいて(48ピクセル以内)、「a」ボタンを押すと、
-            if (woodsKeeper.within(player, 48) && game.input.a) { // withinは当たり判定に距離を指定できる
-                game.talkSD.play();
-                // 森の休憩所シーンを表示する
-                game.pushScene(game.woods());
+            // woodsKeeperに近づいた時の処理(24ピクセル以内)、
+            if (woodsKeeper.within(player, 24)) { // withinは当たり判定に距離を指定できる
+                player.vx = -player.vx; 
+                player.vy = -player.vy; 
+
+                if (game.input.a) { //「a」ボタンを押すと
+                    game.talkSD.play();
+                    // 森の休憩所シーンを表示する
+                    game.pushScene(game.woods());
+                }
+            }
+
+            // friend1に近づいた時の処理(24ピクセル以内)、
+            if (friend1.within(player, 24)) { // withinは当たり判定に距離を指定できる
+                // プレイヤーの動きを戻す
+                player.vx = -player.vx; 
+                player.vy = -player.vy; 
+                // 友達1の動きを戻す
+                friend1.vx = -friend1.vx; 
+                friend1.vy = -friend1.vy; 
             }
 
             // 敵を作る処理
@@ -725,6 +740,11 @@ var Player = enchant.Class.create(enchant.Sprite, {
                 // 移動先が決まったら、
                 if (this.vx || this.vy) {
                     // 移動先の座標を求める
+                    // vx vy を元に 移動先位置を求め、そこが移動可能かどうか調べる
+                    // playerのスプライトのサイズは32なので、右側に接する位置は32、左側に接する位置は 0 中心位置は 16 になる
+                    // vx vy が  4 の場合  16 + 16 = 32
+                    // vx vy が -4 の場合 -16 + 16 = 0
+                    // vx vy が  0 の場合   0 + 16 = 16
                     var x = this.x + (this.vx ? this.vx / Math.abs(this.vx) * 16 : 0) + 16;
                     var y = this.y + (this.vy ? this.vy / Math.abs(this.vy) * 16 : 0) + 16;
                     // その座標が移動可能な場所なら
@@ -1066,7 +1086,7 @@ var home = {
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-        [0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+        [0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
