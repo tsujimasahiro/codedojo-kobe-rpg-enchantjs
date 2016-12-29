@@ -737,7 +737,7 @@ var Player = enchant.Class.create(enchant.Sprite, {
                     this.direction = 0;
                     this.vy = 4;
                 }
-                // 移動先が決まったら、
+                // 移動先が決まったら、(vxもvyもゼロでない値が設定されていれば)
                 if (this.vx || this.vy) {
                     // 移動先の座標を求める
                     // vx vy を元に 移動先位置を求め、そこが移動可能かどうか調べる
