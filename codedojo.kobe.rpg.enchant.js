@@ -141,9 +141,9 @@ window.onload = function() {
             if (player.y > 445) game.pushScene(game.park(player.x, player.y));
 
             // woodsKeeperに近づいた時の処理(24ピクセル以内)、
-            if (woodsKeeper.within(player, 24)) { // withinは当たり判定に距離を指定できる
-                player.vx = -player.vx; 
-                player.vy = -player.vy; 
+            if (woodsKeeper.within(player, 36)) { // withinは当たり判定に距離を指定できる
+                player.vx = -player.vx / 2; 
+                player.vy = -player.vy / 2; 
 
                 if (game.input.a) { //「a」ボタンを押すと
                     game.talkSD.play();
