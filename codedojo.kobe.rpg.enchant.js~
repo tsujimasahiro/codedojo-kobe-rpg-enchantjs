@@ -309,6 +309,8 @@ window.onload = function() {
             if (player.y < 1 ) game.popScene();
 
             // 敵を作る処理
+            // 0から100までの間の乱数を出して、それが10より小さい場合で、
+            // 敵の数が最大数になっていない場合だけ敵をつくる
             if (rand(100) < 10 && enemiesCnt < MAX_ENEMIES ) {
                 // 敵を出現させる座標を求める
                 var ex = rand(28) * 16 + 16;

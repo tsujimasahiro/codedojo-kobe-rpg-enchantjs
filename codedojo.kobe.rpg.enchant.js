@@ -984,7 +984,7 @@ var monstorTable = {
 
 var playerStatus = {
     lv: 1,         // レベル どこでレベルアップしたらいいか？
-    hp: 12,      // 現在HP
+    hp: 24,      // 現在HP
     hpMax: 12,   // 最大HP
     exp: 0,        // 経験値 どこで増やすか？
     attack: 1,     // 攻撃力
